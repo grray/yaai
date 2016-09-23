@@ -74,9 +74,9 @@ $manifest = array (
                    'icon' => '',
                    'is_uninstallable' => true,
                    'name' => 'Callinize for SugarCRM/Asterisk',
-                   'published_date' => '2016-Sep-22 09:09',
+                   'published_date' => '2016-Sep-23 10:09',
                    'type' => 'module',
-                   'version' => '1',
+                   'version' => '66',
                    'remove_tables' => 'true',  /** This does absolutely nothing since our asterisk log table is created manually instead of as a bean **/
                    );
 

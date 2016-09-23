@@ -1,39 +1,39 @@
 //**
-// * Asterisk SugarCRM Integration 
+// * Asterisk SugarCRM Integration
 // * (c) KINAMU Business Solutions AG 2009
-// * 
+// *
 // * Parts of this code are (c) 2006. RustyBrick, Inc.  http://www.rustybrick.com/
-// * Parts of this code are (c) 2008 vertico software GmbH  
+// * Parts of this code are (c) 2008 vertico software GmbH
 // * Parts of this code are (c) 2009 Copyright (c) 2009 Anant Garg (anantgarg.com | inscripts.com)
 // * Parts of this code are (c) 2009 abcona e. K. Angelo Malaguarnera E-Mail admin@abcona.de
 // * Parts of this code are (c) 2011 Blake Robertson http://www.blakerobertson.com
 // * Parts of this code are (c) 2012 Patrick Hogan askhogan@gmail.com
 // * http://www.sugarforge.org/projects/yaai/
 // * Contribute To Project: http://www.github.com/blak3r/yaai
-// * 
+// *
 // * This program is free software; you can redistribute it and/or modify it under
 // * the terms of the GNU General Public License version 3 as published by the
 // * Free Software Foundation with the addition of the following permission added
 // * to Section 15 as permitted in Section 7(a): FOR ANY PART OF THE COVERED WORK
 // * IN WHICH THE COPYRIGHT IS OWNED BY SUGARCRM, SUGARCRM DISCLAIMS THE WARRANTY
 // * OF NON INFRINGEMENT OF THIRD PARTY RIGHTS.
-// * 
+// *
 // * This program is distributed in the hope that it will be useful, but WITHOUT
 // * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 // * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
 // * details.
-// * 
+// *
 // * You should have received a copy of the GNU General Public License along with
 // * this program; if not, see http://www.gnu.org/licenses or write to the Free
 // * Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 // * 02110-1301 USA.
-// * 
+// *
 // * You can contact KINAMU Business Solutions AG at office@kinamu.com
-// * 
+// *
 // * The interactive user interfaces in modified source and object code versions
 // * of this program must display Appropriate Legal Notices, as required under
 // * Section 5 of the GNU General Public License version 3.
-// * 
+// *
 
 var YAAI = {
     nextHeight : '0',
@@ -98,7 +98,7 @@ var YAAI = {
     },
 
     // CREATE
-    
+
     createCallBox : function (callboxid, entry, modstrings) {
        if($('#callbox_'+callboxid).attr('id') == undefined){
            var html;
@@ -203,24 +203,24 @@ var YAAI = {
             $("#callbox_"+callboxid).show();
        }
     },
-    
+
     // UPDATE
-    
+
     updateCallBox : function (callboxid, entry){
         $("#callbox_"+callboxid).find('.callboxtitle').text(entry['title']);
         $("#callbox_"+callboxid).find('.phone_number').text(entry['phone_number']); // Needed for AMI v1.0, outbound calls.
 
         YAAI.setCallBoxHeadColor(callboxid, entry);
         YAAI.setTransferButton(callboxid,entry);
-				
+
         $(".call_duration", "#callbox_"+callboxid+" .callboxcontent").text( entry['duration'] ); // Updates duration
 
         YAAI.refreshSingleMatchView(callboxid, entry);
-        
+
     },
-    
+
     // CLEANUP
-    
+
     wasCallBoxClosedInAnotherBrowserWindow : function  (callboxids){
         for(var i=0; i < YAAI.callBoxes.length; i++ ) {
             if( -1 == $.inArray(YAAI.callBoxes[i], callboxids) ) {
@@ -241,16 +241,16 @@ var YAAI = {
             YAAI.toggleCallBoxGrowth(callboxid);
         });
     },
-    
+
     bindCloseCallBox : function(callboxid, call_record_id){
         $('#callbox_'+callboxid).find('.callboxoptions a').on("click", function(){
             YAAI.closeCallBox(callboxid, call_record_id);
-        });  
+        });
     },
-    
+
     bindSaveMemo : function(callboxid, call_record_id, phone_number, direction){
         $('#callbox_'+callboxid).find('.save_memo').button().on("click", function(){
-            YAAI.saveMemo(callboxid, call_record_id, phone_number, direction);  
+            YAAI.saveMemo(callboxid, call_record_id, phone_number, direction);
         });
     },
 
@@ -401,7 +401,7 @@ var YAAI = {
             text: false
         }).on("click", function(){
             YAAI.openPopup(entry);
-        });  
+        });
     },
 
     // Not going to have this...
@@ -416,28 +416,28 @@ var YAAI = {
                 YAAI.openPopup(entry);
             });
     },
-    
+
     bindSetBeanID : function(callboxid, entry){
         //console.log("in bind "+ bean_module + " is what beanmodule is");
         $('#callbox_'+callboxid).find('.multiplematchingcontacts td p').on("click", "input",  function(){
             YAAI.setBeanID(entry['call_record_id'], this.className, this.value);
         })
     },
-    
+
     /// USER ACTIONS
     closeCallBox : function(callboxid, call_record_id) {
         if( !YAAI.isCallBoxClosed(callboxid) ) {
             $('#callbox_'+callboxid).remove();
             $('#block-number-callbox_'+callboxid).remove();
             $('#dropdown-1_callbox_'+callboxid).remove();
-            
-            YAAI.restructureCallBoxes();  
-            
+
+            YAAI.restructureCallBoxes();
+
             if(call_record_id){
                 // Tells asterisk_log table that user has closed this entry.
                 $.post("index.php?entryPoint=AsteriskController&action=updateUIState", {
-                    id: callboxid, 
-                    ui_state: "Closed", 
+                    id: callboxid,
+                    ui_state: "Closed",
                     call_record: call_record_id
                 } );
             }
@@ -445,36 +445,36 @@ var YAAI = {
         }
     },
     toggleCallBoxGrowth : function(callboxid) {
-        if (YAAI.isCallBoxMinimized(callboxid) ) {  
+        if (YAAI.isCallBoxMinimized(callboxid) ) {
             YAAI.maximizeCallBox(callboxid);
-        } 
-        else {	
+        }
+        else {
             YAAI.minimizeCallBox(callboxid);
         }
         YAAI.restructureCallBoxes(); // BR added... only needed for vertical stack method.
     },
-    
+
     setBeanID : function( callRecordId, beanModule, beanId) {
         $.post("index.php?entryPoint=AsteriskController&action=setBeanID", {
-            call_record: callRecordId, 
+            call_record: callRecordId,
             bean_module: beanModule,
             bean_id: beanId
         } );
-     
+
         //force an out of loop request to refresh contact view
         var loop = false;
         YAAI.checkForNewStates(loop);
-        
+
     },
-    
+
     saveMemo : function(callboxid, call_record_id, phone_number, direction) {
         var message = YAAI.getMemoText(callboxid);
-    
+
         if (message != '') {
             $.post("index.php?entryPoint=AsteriskController&action=memoSave", {
-                id: callboxid, 
-                call_record: call_record_id, 
-                description: message, 
+                id: callboxid,
+                call_record: call_record_id,
+                description: message,
                 direction: direction,
                 sugar_user_id: YAAI.sugarUserID,
                 phone_number: phone_number
@@ -498,7 +498,7 @@ var YAAI = {
                 "first_name":"relateContactFirstName",
                 "last_name":"relateContactLastName"
             }
-        },"single",true);   
+        },"single",true);
     },
 
     openAccountRelatePopup : function (entry){
@@ -515,17 +515,17 @@ var YAAI = {
     showTransferMenu : function(entry, callboxid, exten ) {
         if( callboxid != '' ) {
             exten = prompt("Please enter the extension number you'd like to transfer to:\n(Leave Blank to cancel)","");
-		
+
             if( exten != null && exten != '') {
                 $.post("index.php?entryPoint=AsteriskController&action=transfer", {
-                    id: callboxid, 
-                    call_record: entry['call_record_id'], 
+                    id: callboxid,
+                    call_record: entry['call_record_id'],
                     extension: exten
                 });
             }
         }
-    }, 
-    
+    },
+
     /*
  * Relate Contact Callback method.
  * This is called by the open_popup sugar call when a contact is selected.
@@ -557,7 +557,7 @@ var YAAI = {
         }
 
         // Everything above is from the default set_return method in parent_popup_helper.
-        
+
         var contactId = window.document.forms[form_name].elements['relateContactId'].value;
         if( contactId != null ) {
             YAAI.setBeanID(form_name,'contacts',contactId);
@@ -616,24 +616,24 @@ var YAAI = {
         var currHeight = 0;
         for(var i=0; i < YAAI.callBoxes.length; i++ ) {
             var callboxid = YAAI.callBoxes[i];
-            
-            if( !YAAI.isCallBoxClosed( callboxid ) ) {   
+
+            if( !YAAI.isCallBoxClosed( callboxid ) ) {
                 //put first box at 0 height - bottom of page
-                $("#callbox_"+callboxid).css('bottom', currHeight+'px');       
+                $("#callbox_"+callboxid).css('bottom', currHeight+'px');
                 //then grab the height of the box - this will tell if it is open or not
-                currHeight += $("#callbox_"+callboxid).height();  
+                currHeight += $("#callbox_"+callboxid).height();
             }
         }
         YAAI.nextHeight = currHeight;
-	
+
     },
-    
+
     minimizeExistingCallboxesWhenNewCallComesIn : function(){
         for(var x=0; x < YAAI.callBoxes.length; x++ ) {
             YAAI.minimizeCallBox( YAAI.callBoxes[x] ); // updates a cookie each time... perhaps check first.
         }
     },
-    
+
     startVerticalEndVertical : function(callboxid){
         // START VERTICAL
         YAAI.restructureCallBoxes();
@@ -642,7 +642,7 @@ var YAAI = {
         // END VERTICAL
         YAAI.callBoxes.push(callboxid);
     },
-    
+
     setupCallBoxFocusAndBlurSettings : function(callboxid){
         YAAI.callboxFocus[callboxid] = false;
         $("#callbox_"+callboxid+" .callboxtextarea").blur(function(){
@@ -661,11 +661,11 @@ var YAAI = {
         $('#callbox_'+callboxid+' .callboxcontent').css('display','block');
         $('#callbox_'+callboxid+' .callboxinput').css('display','block');
         //$("#callbox_"+callboxid+" .callboxcontent").scrollTop($("#callbox_"+callboxid+" .callboxcontent")[0].scrollHeight);
-				
+
         if( YAAI.isCallBoxMinimized( callboxid ) ) {
             YAAI.log( callboxid + " minimize state cookie fail (should be maximized)");
         }
-		
+
         YAAI.updateMinimizeCookie();
     },
 
@@ -673,20 +673,20 @@ var YAAI = {
         $('#callbox_'+callboxid+' .control_panel').css('display', 'none');
         $('#callbox_'+callboxid+' .callboxcontent').css('display','none');
         $('#callbox_'+callboxid+' .callboxinput').css('display','none');
-		
+
         if( !YAAI.isCallBoxMinimized( callboxid ) ) {
             YAAI.log( callboxid + " minimize state cookie fail");
         }
-		
+
         YAAI.updateMinimizeCookie();
     },
-    
+
     showCallerIDWhenAvailable : function(entry){
         if(entry['caller_id']){
             $('#caller_id').show();
         }
     },
-    
+
     refreshSingleMatchView : function (callboxid, entry){
 
         console.log("Refreshing single match");
@@ -709,25 +709,25 @@ var YAAI = {
                }
             }
         }
-        
+
         // MULTIPLE OR NO MATCH --> Single case
         if( entry['beans'].length == 1 && singlematching.is(':hidden') ){
             //bind back the unrelate button
             YAAI.bindOpenPopupSingleMatchingContact(callboxid, entry);
-            
+
             $('#callbox_'+callboxid).find('.nomatchingcontact').hide();
             $('#callbox_'+callboxid).find('.multiplematchingcontacts').hide();
             YAAI.refreshSingleMatchingContact(callboxid, entry);
         }
     },
-    
+
     refreshSingleMatchingContact : function(callboxid, entry){
         var bean = entry['beans'][0];
 
         $('#callbox_'+callboxid).find('.singlematchingcontact').show();
         $('#callbox_'+callboxid).find('.singlematchingcontact td a.contact_id').attr('href', bean['bean_link']);
         $('#callbox_'+callboxid).find('.singlematchingcontact td span.call_contacts').text(bean['bean_name']);
-        
+
         //check if new contact has an account
         if(bean['parent_name'] == null || bean['parent_name'].length <= 0 ) {
             $('#callbox_'+callboxid).find('.parent_name_box').hide();
@@ -745,7 +745,7 @@ var YAAI = {
 
     // Saves what is placed in the input box whenever call is saved.
     checkCallBoxInputKey : function(event, callboxid, call_record_id, phone_number, direction) {
-	 
+
         // 13 == Enter
         if(event.keyCode == 13)  {
             // CTRL + ENTER == quick save + close shortcut
@@ -799,10 +799,10 @@ var YAAI = {
                 return ret;
             }
         });
-    
+
         return context;
     },
-    
+
     setCallBoxHeadColor : function (callboxid, entry){
         if( entry['is_hangup']  ) {
             $("#callbox_"+callboxid+" .callboxhead").css("background-color", "#f99d39"); // an orange color
@@ -827,20 +827,20 @@ var YAAI = {
     createContact : function (entry) {
         var phone_number = entry['phone_number'];
         window.location = "index.php?module=Contacts&action=EditView&phone_work="+phone_number;
-    },    
+    },
     // Updates the cookie which stores the state of all the callboxes (whether minimized or maximized)
     // Only problem with this approach is on second browser window you might have them open differently... and this would save the state as such.
     updateMinimizeCookie : function() {
         var cookieVal="";
         for( var i=0; i< YAAI.callBoxes.length; i++ ) {
-		
+
             if( YAAI.isCallBoxMinimized( YAAI.callBoxes[i] ) ) {
                 cookieVal = YAAI.callBoxes[i] + "|";
             }
         }
-	
+
         cookieVal = cookieVal.substr(0, cookieVal.length - 1 ); // remove trailing "|"
-	
+
         $.cookie('callbox_minimized', cookieVal);
     },
     checkMinimizeCookie : function (callboxid){
@@ -863,51 +863,51 @@ var YAAI = {
             $('#callbox_'+callboxid+' .callboxinput').css('display','none');
         }
     },
-    
+
     getAsteriskID : function(astId){
-    
+
         var asterisk_id = astId.replace(/\./g,'-'); // ran into issues with jquery not liking '.' chars in id's so converted . -> -BR //this should be handled in PHP
-    
+
         return asterisk_id;
-    }, 
+    },
 
     isCallBoxClosed : function(callboxid) {
         return $('#callbox_'+callboxid).length == 0;
     },
-    
+
     isCallBoxMinimized : function( callboxid ) {
 
         return $('#callbox_'+callboxid+' .callboxcontent').css('display') == 'none';
 
     },
-    
+
     callBoxHasNotAlreadyBeenCreated : function(callboxid){
         var open = (-1 == $.inArray(callboxid, YAAI.callBoxes));
-        
+
         if ($("#callbox_"+callboxid).length > 0) {
             if ($("#callbox_"+callboxid).css('display') == 'none') {
                 $("#callbox_"+callboxid).css('display','block');
                 YAAI.restructureCallBoxes(callboxid);
             }
         }
-        
+
         return open;
     },
-    
+
     checkForErrors : function(entry){
         if( entry['call_record_id'] == "-1" ) {
             YAAI.log( "Call Record ID returned from server is -1, unable to save call notes for " + entry['title'] ); // TODO: disable the input box instead of this alert.
-        }  
+        }
     },
- 
+
     getMemoText : function( callboxid ) {
         var message = "";
         message = $('#callbox_'+callboxid+' .callboxinput .callboxtextarea').val();
         message = message.replace(/^\s+|\s+$/g,""); // Trims message
-	
+
         return message;
     },
- 
+
     getCookies : function(){
         var pairs = document.cookie.split(";");
         var cookies = {};
@@ -917,7 +917,7 @@ var YAAI = {
         }
         return cookies;
     },
-    
+
     log : function(message) {
         if (window.callinize_debug == 1) {
             console.log(message);
@@ -925,13 +925,13 @@ var YAAI = {
     },
     callStateIsNotFiltered : function(entry){
       //this is required to filter call states that would change to Hangup but have an answered state of 0
-      
+
       if(YAAI.filteredCallStates == 'Ringing' || YAAI.filteredCallStates == 'Dial'){
           if(entry.answered == '0'){
               return false;
           }
       }
-      
+
       return ($.inArray(entry.state, YAAI.filteredCallStates) == -1);
     }
 

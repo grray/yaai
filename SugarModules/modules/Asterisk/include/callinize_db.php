@@ -85,6 +85,9 @@ function updateUIState($ui_state, $call_record, $asterisk_id) {
 }
 
 function setBeanID($call_record, $bean_module, $bean_id) {
+    if (empty($call_record) || empty($bean_id)) {
+        return;
+    }
     //wrapped the entire action to require a call_record - if this is not being passed then there is no point for this action - PJH
     if (is_string($call_record) && is_string($bean_id) ) {
         // Very basic sanitization
@@ -133,6 +136,8 @@ function setBeanID($call_record, $bean_module, $bean_id) {
 
         $focus = new Call();
         $focus->retrieve($call_record);
+        file_put_contents('/tmp/phplog', get_class($focus), FILE_APPEND);
+
         $focus->load_relationship('contacts');
         $focus->load_relationship('accounts');
         // TODO here, find if there is a way to remove all relationships dynamically so we don't need to specify 'contacts', 'accounts' explicitly
@@ -155,7 +160,7 @@ function setBeanID($call_record, $bean_module, $bean_id) {
                 $focus->accounts->add($bean_id);
                 break;
             }
-
+        $focus->date_start = "2016-09-23 14:13:00";
         $focus->save();
     }
 }
@@ -244,8 +249,9 @@ function blockNumber($number, $description) {
 function getCalls($mod_strings, $current_user) {
     //logLine("  getCalls START", "c:/controller.log");
     $result_set = get_calls_for_current_user($current_user);
-    //logLine("  get_calls() returned", "c:/controller.log");
+    // logLine("  get_calls() returned", "c:/controller.log");
     $response = build_getCalls_item_list($result_set, $current_user, $mod_strings);
+
     //logLine("  build_item_list done... ", "c:/controller.log");
     // print out json
     $response_array = array();
@@ -447,7 +453,7 @@ function build_getCalls_item_list($result_set, $current_user, $mod_strings) {
 
             // Dont fetch contacts if it's already known this is already been related to another module.
             if( !empty($row['bean_module']) && !empty($row['bean_id']) ) {
-                $beans = make_bean_array_from_call_row($row);;
+                $beans = make_bean_array_from_call_row($row);
             }
             else {
                 // @@@@ BEGIN CALLINIZE COMMUNITY ONLY @@@@

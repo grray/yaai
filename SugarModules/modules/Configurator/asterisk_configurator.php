@@ -35,11 +35,11 @@ if(!defined('sugarEntry') || !sugarEntry) die('Not A Valid Entry Point');
  *
  */
 if(!is_admin($current_user) && !defined("configurator_util")){
-	sugar_die('Admin Only');	
+	sugar_die('Admin Only');
 }
 
 require_once('modules/Configurator/Forms.php');
-echo get_module_title($mod_strings['LBL_MANAGE_ASTERISK'], $mod_strings['LBL_MANAGE_ASTERISK'].": ", true);
+// echo get_module_title($mod_strings['LBL_MANAGE_ASTERISK'], $mod_strings['LBL_MANAGE_ASTERISK'].": ", true);
 require_once('modules/Configurator/Configurator.php');
 require_once('asterisk_config_meta.php');
 
@@ -72,14 +72,14 @@ if(!empty($_POST['save'])){
 		}
 	}
 
-	$configurator->saveConfig();	
+	$configurator->saveConfig();
 	$focus->saveConfig();
 	header('Location: index.php?module=Administration&action=index');
 }
 
 $focus->retrieveSettings();
 if(!empty($_POST['restore'])){
-	$configurator->restoreConfig();	
+	$configurator->restoreConfig();
 }
 
 // Build the $asterisk_config array which stores all the default values used in smart template below if

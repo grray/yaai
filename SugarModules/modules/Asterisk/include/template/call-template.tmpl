@@ -1,76 +1,143 @@
 (function() {
   var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
-templates['call-template.html'] = template({"1":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+templates['call-template.html'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, self=this;
 
-  return "                            <p class=\"select_contact\" id=\"contact_"
-    + alias4(((helper = (helper = helpers.bean_id || (depth0 != null ? depth0.bean_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"bean_id","hash":{},"data":data}) : helper)))
-    + "\">\n                                <input type=\"radio\" name=\"contactSelect\" class="
-    + alias4(((helper = (helper = helpers.bean_module || (depth0 != null ? depth0.bean_module : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"bean_module","hash":{},"data":data}) : helper)))
-    + " value="
-    + alias4(((helper = (helper = helpers.bean_id || (depth0 != null ? depth0.bean_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"bean_id","hash":{},"data":data}) : helper)))
-    + "  />\n                                <a class=\"multiplecontacts\" title=\""
-    + alias4(((helper = (helper = helpers.parent_name || (depth0 != null ? depth0.parent_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"parent_name","hash":{},"data":data}) : helper)))
-    + "\" href="
-    + alias4(((helper = (helper = helpers.bean_link || (depth0 != null ? depth0.bean_link : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"bean_link","hash":{},"data":data}) : helper)))
-    + ">"
-    + alias4(((helper = (helper = helpers.bean_name || (depth0 != null ? depth0.bean_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"bean_name","hash":{},"data":data}) : helper)))
-    + "</a>\n                            </p>\n";
-},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+function program1(depth0,data) {
+  
+  var buffer = "", stack1, foundHelper;
+  buffer += "\n                            <p class=\"select_contact\" id=\"contact_";
+  foundHelper = helpers.bean_id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.bean_id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\">\n                                <input type=\"radio\" name=\"contactSelect\" class=";
+  foundHelper = helpers.bean_module;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.bean_module; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + " value=";
+  foundHelper = helpers.bean_id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.bean_id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "  />\n                                <a class=\"multiplecontacts\" title=\"";
+  foundHelper = helpers.parent_name;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.parent_name; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\" href=";
+  foundHelper = helpers.bean_link;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.bean_link; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + ">";
+  foundHelper = helpers.bean_name;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.bean_name; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</a>\n                            </p>\n                            ";
+  return buffer;}
 
-  return "<div id=\""
-    + alias4(((helper = (helper = helpers.callbox_id || (depth0 != null ? depth0.callbox_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"callbox_id","hash":{},"data":data}) : helper)))
-    + "\" class=\"callbox\">\n    <div class=\"callboxhead\">\n        <div class=\"callboxtitle\">"
-    + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "</div>\n        <div class=\"callboxoptions\">\n            <a href=\"#\" class=\"callbox_close\">X</a>\n        </div>\n    </div>\n    <div class=\"control_panel\">\n        <button class=\"transfer_panel\"></button>\n        <button class=\"operator_panel\"></button>\n        <!--<button class=\"callbox_action\" data-dropdown=\"#dropdown-1_"
-    + alias4(((helper = (helper = helpers.callbox_id || (depth0 != null ? depth0.callbox_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"callbox_id","hash":{},"data":data}) : helper)))
-    + "\"></button>-->\n        <button class=\"callbox_action\"></button>\n    </div>\n    <div id=\"dropdown-1_"
-    + alias4(((helper = (helper = helpers.callbox_id || (depth0 != null ? depth0.callbox_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"callbox_id","hash":{},"data":data}) : helper)))
-    + "\" class=\"dropdown-menu calldd has-tip dropdown-hidden\"> <!-- left: 746px; top: 631px; display: block; -->\n        <ul>\n            <li class=\"ul_relate_to_contact\"><a href=\"#\" class=\"relate_to_contact\">"
-    + alias4(((helper = (helper = helpers.relate_to_contact_label || (depth0 != null ? depth0.relate_to_contact_label : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"relate_to_contact_label","hash":{},"data":data}) : helper)))
-    + "</a></li>\n            <li class=\"ul_relate_to_account\"><a href=\"#\" class=\"relate_to_account\">"
-    + alias4(((helper = (helper = helpers.relate_to_account_label || (depth0 != null ? depth0.relate_to_account_label : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"relate_to_account_label","hash":{},"data":data}) : helper)))
-    + "</a></li>\n\n            <li class=\"ul_create_contact\"><a href=\"#\" class=\"create_contact\">"
-    + alias4(((helper = (helper = helpers.create_new_contact_label || (depth0 != null ? depth0.create_new_contact_label : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"create_new_contact_label","hash":{},"data":data}) : helper)))
-    + "</a></li>\n\n        </ul>\n    </div>\n    <div class=\"callboxcontent\">\n        <div class=\"asterisk_info\">\n            <h4 class=\"call_type\">"
-    + alias4(((helper = (helper = helpers.call_type || (depth0 != null ? depth0.call_type : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"call_type","hash":{},"data":data}) : helper)))
-    + "</h4>\n            <div>\n                <table class=\"asterisk_data\">\n                    <tr class=\"multiplematchingcontacts\">\n                        <td colspan=\"2\">\n                            <b>"
-    + alias4(((helper = (helper = helpers.select_contact_label || (depth0 != null ? depth0.select_contact_label : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"select_contact_label","hash":{},"data":data}) : helper)))
-    + "</b>\n"
-    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.beans : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "                        </td>\n                    </tr>\n                    <tr class=\"singlematchingcontact\">\n                        <td>"
-    + alias4(((helper = (helper = helpers.name_label || (depth0 != null ? depth0.name_label : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name_label","hash":{},"data":data}) : helper)))
-    + "</td>\n                        <td><a class=\"contact_id\" href=\""
-    + alias4(((helper = (helper = helpers.bean_link || (depth0 != null ? depth0.bean_link : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"bean_link","hash":{},"data":data}) : helper)))
-    + "\">\n                            <span class=\"call_contacts\">"
-    + alias4(((helper = (helper = helpers.bean_name || (depth0 != null ? depth0.bean_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"bean_name","hash":{},"data":data}) : helper)))
-    + "</span>\n                        </a>\n                            <!-- <button class=\"unrelate_contact\"></button> -->\n                        </td>\n                    </tr>\n                    <tr class=\"parent_name_box\">\n                        <td>"
-    + alias4(((helper = (helper = helpers.company_label || (depth0 != null ? depth0.company_label : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"company_label","hash":{},"data":data}) : helper)))
-    + "</td>\n                        <td><a class=\"company\" href=\""
-    + alias4(((helper = (helper = helpers.parent_link || (depth0 != null ? depth0.parent_link : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"parent_link","hash":{},"data":data}) : helper)))
-    + "\">"
-    + alias4(((helper = (helper = helpers.parent_name || (depth0 != null ? depth0.parent_name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"parent_name","hash":{},"data":data}) : helper)))
-    + "</a></td>\n                    </tr>\n                    <tr class=\"caller_id_box\">\n                        <td class=\"caller_id_label\">"
-    + alias4(((helper = (helper = helpers.caller_id_label || (depth0 != null ? depth0.caller_id_label : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"caller_id_label","hash":{},"data":data}) : helper)))
-    + ":</td>\n                        <td class=\"caller_id\">"
-    + alias4(((helper = (helper = helpers.caller_id || (depth0 != null ? depth0.caller_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"caller_id","hash":{},"data":data}) : helper)))
-    + "</td>\n                    </tr>\n                    <tr class=\"phone_number_box\">\n                        <td class=\"phone_number_label\">"
-    + alias4(((helper = (helper = helpers.phone_number_label || (depth0 != null ? depth0.phone_number_label : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"phone_number_label","hash":{},"data":data}) : helper)))
-    + ":</td>\n                        <td class=\"phone_number\">"
-    + alias4(((helper = (helper = helpers.phone_number || (depth0 != null ? depth0.phone_number : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"phone_number","hash":{},"data":data}) : helper)))
-    + "</td>\n                    </tr>\n                    <tr class=\"call_duration_box\">\n                        <td class=\"call_duration_label\">"
-    + alias4(((helper = (helper = helpers.duration_label || (depth0 != null ? depth0.duration_label : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"duration_label","hash":{},"data":data}) : helper)))
-    + ":</td>\n                        <td>\n                            <span class=\"call_duration\">"
-    + alias4(((helper = (helper = helpers.duration || (depth0 != null ? depth0.duration : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"duration","hash":{},"data":data}) : helper)))
-    + "</span>\n                        </td>\n                    </tr>\n                    <!--<tr class=\"call_time_box\">-->\n                        <!--<td class=\"call_time_label\">"
-    + alias4(((helper = (helper = helpers.call_time_label || (depth0 != null ? depth0.call_time_label : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"call_time_label","hash":{},"data":data}) : helper)))
-    + ":</td>-->\n                        <!--<td>-->\n                            <!--<span class=\"call_duration\">"
-    + alias4(((helper = (helper = helpers.call_time || (depth0 != null ? depth0.call_time : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"call_time","hash":{},"data":data}) : helper)))
-    + "</span>-->\n                        <!--</td>-->\n                    <!--</tr>-->\n                </table>\n            </div>\n        </div>\n    </div>\n    <div class=\"callboxinput\">\n        <textarea rows=\"4\" cols=\"30\" class=\"callboxtextarea callboxtextareaselected\"></textarea>\n        <div class=\"callboxbuttons\">\n            <table width=\"100%\">\n                <tbody>\n                <tr>\n                    <td valign=\"bottom\">\n                        <button class=\"save_memo\">"
-    + alias4(((helper = (helper = helpers.save_label || (depth0 != null ? depth0.save_label : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"save_label","hash":{},"data":data}) : helper)))
-    + "</button>\n                    </td>\n                </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n    <form class=\"call_record_id\" name=\""
-    + alias4(((helper = (helper = helpers.call_record_id || (depth0 != null ? depth0.call_record_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"call_record_id","hash":{},"data":data}) : helper)))
-    + "\">\n        <input type='hidden' name=\"relateContactId\"/>\n        <input type='hidden' name=\"relateContactFirstName\"/>\n        <input type='hidden' name=\"relateContactLastName\"/>\n        <input type='hidden' name=\"relateAccountId\"/>\n        <input type='hidden' name=\"relateAccountName\"/>\n    </form>\n</div>\n";
-},"useData":true});
+  buffer += "<div id=\"";
+  foundHelper = helpers.callbox_id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.callbox_id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\" class=\"callbox\">\n    <div class=\"callboxhead\">\n        <div class=\"callboxtitle\">";
+  foundHelper = helpers.title;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.title; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</div>\n        <div class=\"callboxoptions\">\n            <a href=\"#\" class=\"callbox_close\">X</a>\n        </div>\n    </div>\n    <div class=\"control_panel\">\n        <button class=\"transfer_panel\"></button>\n        <button class=\"operator_panel\"></button>\n        <!--<button class=\"callbox_action\" data-dropdown=\"#dropdown-1_";
+  foundHelper = helpers.callbox_id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.callbox_id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"></button>-->\n        <button class=\"callbox_action\"></button>\n    </div>\n    <div id=\"dropdown-1_";
+  foundHelper = helpers.callbox_id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.callbox_id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\" class=\"dropdown-menu calldd has-tip dropdown-hidden\"> <!-- left: 746px; top: 631px; display: block; -->\n        <ul>\n            <li class=\"ul_relate_to_contact\"><a href=\"#\" class=\"relate_to_contact\">";
+  foundHelper = helpers.relate_to_contact_label;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.relate_to_contact_label; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</a></li>\n            <li class=\"ul_relate_to_account\"><a href=\"#\" class=\"relate_to_account\">";
+  foundHelper = helpers.relate_to_account_label;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.relate_to_account_label; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</a></li>\n\n            <li class=\"ul_create_contact\"><a href=\"#\" class=\"create_contact\">";
+  foundHelper = helpers.create_new_contact_label;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.create_new_contact_label; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</a></li>\n\n        </ul>\n    </div>\n    <div class=\"callboxcontent\">\n        <div class=\"asterisk_info\">\n            <h4 class=\"call_type\">";
+  foundHelper = helpers.call_type;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.call_type; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</h4>\n            <div>\n                <table class=\"asterisk_data\">\n                    <tr class=\"multiplematchingcontacts\">\n                        <td colspan=\"2\">\n                            <b>";
+  foundHelper = helpers.select_contact_label;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.select_contact_label; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</b>\n                            ";
+  stack1 = depth0.beans;
+  stack1 = helpers.each.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(1, program1, data)});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n                        </td>\n                    </tr>\n                    <tr class=\"singlematchingcontact\">\n                        <td>";
+  foundHelper = helpers.name_label;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.name_label; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</td>\n                        <td><a class=\"contact_id\" href=\"";
+  foundHelper = helpers.bean_link;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.bean_link; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\">\n                            <span class=\"call_contacts\">";
+  foundHelper = helpers.bean_name;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.bean_name; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</span>\n                        </a>\n                            <!-- <button class=\"unrelate_contact\"></button> -->\n                        </td>\n                    </tr>\n                    <tr class=\"parent_name_box\">\n                        <td>";
+  foundHelper = helpers.company_label;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.company_label; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</td>\n                        <td><a class=\"company\" href=\"";
+  foundHelper = helpers.parent_link;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.parent_link; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\">";
+  foundHelper = helpers.parent_name;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.parent_name; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</a></td>\n                    </tr>\n                    <tr class=\"caller_id_box\">\n                        <td class=\"caller_id_label\">";
+  foundHelper = helpers.caller_id_label;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.caller_id_label; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + ":</td>\n                        <td class=\"caller_id\">";
+  foundHelper = helpers.caller_id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.caller_id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</td>\n                    </tr>\n                    <tr class=\"phone_number_box\">\n                        <td class=\"phone_number_label\">";
+  foundHelper = helpers.phone_number_label;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.phone_number_label; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + ":</td>\n                        <td class=\"phone_number\">";
+  foundHelper = helpers.phone_number;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.phone_number; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</td>\n                    </tr>\n                    <tr class=\"call_duration_box\">\n                        <td class=\"call_duration_label\">";
+  foundHelper = helpers.duration_label;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.duration_label; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + ":</td>\n                        <td>\n                            <span class=\"call_duration\">";
+  foundHelper = helpers.duration;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.duration; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</span>\n                        </td>\n                    </tr>\n                    <!--<tr class=\"call_time_box\">-->\n                        <!--<td class=\"call_time_label\">";
+  foundHelper = helpers.call_time_label;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.call_time_label; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + ":</td>-->\n                        <!--<td>-->\n                            <!--<span class=\"call_duration\">";
+  foundHelper = helpers.call_time;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.call_time; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</span>-->\n                        <!--</td>-->\n                    <!--</tr>-->\n                </table>\n            </div>\n        </div>\n    </div>\n    <div class=\"callboxinput\">\n        <textarea rows=\"4\" cols=\"30\" class=\"callboxtextarea callboxtextareaselected\"></textarea>\n        <div class=\"callboxbuttons\">\n            <table width=\"100%\">\n                <tbody>\n                <tr>\n                    <td valign=\"bottom\">\n                        <button class=\"save_memo\">";
+  foundHelper = helpers.save_label;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.save_label; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</button>\n                    </td>\n                </tr>\n                </tbody>\n            </table>\n        </div>\n    </div>\n    <form class=\"call_record_id\" name=\"";
+  foundHelper = helpers.call_record_id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.call_record_id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\">\n        <input type='hidden' name=\"relateContactId\"/>\n        <input type='hidden' name=\"relateContactFirstName\"/>\n        <input type='hidden' name=\"relateContactLastName\"/>\n        <input type='hidden' name=\"relateAccountId\"/>\n        <input type='hidden' name=\"relateAccountName\"/>\n    </form>\n</div>\n";
+  return buffer;});
 })();
