@@ -494,7 +494,7 @@ while (true) {
                             'module_name' => 'Calls',
                             'name_value_list' => array(
                                 array(
-                                    'name' => 'name',
+                                    'name' =>  'name',
                                     'value' => $mod_strings['YAAI']['CALL_AUTOMATIC_RECORD']
                                 ),
                                 array(
