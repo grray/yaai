@@ -1,0 +1,23 @@
+{
+  "name": "yaai",
+  "version": "1.0.0",
+  "description": "Callinize (formerly known as yaai) is the premier telephony integration supporting Asterisk and SugarCRM.",
+  "main": "index.js",
+  "dependencies": {
+    "handlebars": "4.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digitalstaub/yaai.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/digitalstaub/yaai/issues"
+  },
+  "homepage": "https://github.com/digitalstaub/yaai#readme"
+}

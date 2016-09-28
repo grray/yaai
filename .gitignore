@@ -19,3 +19,4 @@ copyToLiveSystem.*
 ca-bundle-mozilla.crt
 mampCopy.sh
 SugarModules/modules/Asterisk/include/tests/sugarRestTest.php
+node_modules

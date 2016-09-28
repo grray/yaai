@@ -317,7 +317,7 @@ td.asterisk_state		{	font-weight: bold; text-align: center;}
     cursor: pointer;
 }
 
-.dropdown-menu.calldd .divider {
+.dropdown-menu.calldd.divider {
     height: 1px;
     background: #E5E5E5;
     margin: 5px 1px;
