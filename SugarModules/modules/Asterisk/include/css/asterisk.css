@@ -229,14 +229,14 @@ td.asterisk_state		{	font-weight: bold; text-align: center;}
     display: none;
 }
 
-.dropdown-menu.calldd {
+.ddmenu.calldd {
     font: 14px sans-serif;
     position: absolute;
     z-index: 9999999;
     display: none;
 }
 
-.dropdown-menu.calldd UL {
+.ddmenu.calldd UL {
     min-width: 160px;
     list-style: none;
     background: #FFF;
@@ -247,13 +247,14 @@ td.asterisk_state		{	font-weight: bold; text-align: center;}
     overflow: visible;
     padding: 4px 0;
     margin: 0;
+    top: auto;
 }
 
-.dropdown-menu.calldd.has-tip {
+.ddmenu.calldd.has-tip {
     margin-top: 8px;
 }
 
-.dropdown-menu.calldd.has-tip:before {
+.ddmenu.calldd.has-tip:before {
     position: absolute;
     top: -6px;
     left: 9px;
@@ -265,12 +266,12 @@ td.asterisk_state		{	font-weight: bold; text-align: center;}
     display: inline-block;
 }
 
-.dropdown-menu.calldd.has-tip.anchor-right:before {
+.ddmenu.calldd.has-tip.anchor-right:before {
     left: auto;
     right: 9px;
 }
 
-.dropdown-menu.calldd.has-tip:after {
+.ddmenu.calldd.has-tip:after {
     position: absolute;
     top: -5px;
     left: 10px;
@@ -281,18 +282,18 @@ td.asterisk_state		{	font-weight: bold; text-align: center;}
     display: inline-block;
 }
 
-.dropdown-menu.calldd.has-tip.anchor-right:after {
+.ddmenu.calldd.has-tip.anchor-right:after {
     left: auto;
     right: 10px;
 }
 
 
-.dropdown-menu.calldd.has-scroll UL {
+.ddmenu.calldd.has-scroll UL {
     max-height: 358px;
     overflow: auto;
 }
 
-.dropdown-menu.calldd LI {
+.ddmenu.calldd LI {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -300,8 +301,8 @@ td.asterisk_state		{	font-weight: bold; text-align: center;}
     display: none;
 }
 
-.dropdown-menu.calldd LI > A,
-.dropdown-menu.calldd LABEL {
+.ddmenu.calldd LI > A,
+.ddmenu.calldd LABEL {
     display: block;
     color: #555;
     text-decoration: none;
@@ -310,14 +311,14 @@ td.asterisk_state		{	font-weight: bold; text-align: center;}
     white-space: nowrap;
 }
 
-.dropdown-menu.calldd LI > A:hover,
-.dropdown-menu.calldd LABEL:hover {
+.ddmenu.calldd LI > A:hover,
+.ddmenu.calldd LABEL:hover {
     background-color: #08C;
     color: #FFF;
     cursor: pointer;
 }
 
-.dropdown-menu.calldd.divider {
+.ddmenu.calldd.divider {
     height: 1px;
     background: #E5E5E5;
     margin: 5px 1px;
@@ -325,19 +326,19 @@ td.asterisk_state		{	font-weight: bold; text-align: center;}
 }
 
 /* Icon Examples - icons courtesy of http://p.yusukekamiyamane.com/ */
-.dropdown-menu.calldd.has-icons LI > A {
+.ddmenu.calldd.has-icons LI > A {
     padding-left: 30px;
     background-position: 8px center;
     background-repeat: no-repeat;
 }
 
 /*
-.dropdown-menu.calldd .undo A { background-image: url(icons/arrow-curve-180-left.png); }
-.dropdown-menu.calldd .redo A { background-image: url(icons/arrow-curve.png); }
-.dropdown-menu.calldd .cut A { background-image: url(icons/scissors.png); }
-.dropdown-menu.calldd .copy A { background-image: url(icons/document-copy.png); }
-.dropdown-menu.calldd .paste A { background-image: url(icons/clipboard.png); }
-.dropdown-menu.calldd .delete A { background-image: url(icons/cross-script.png); }
+.ddmenu.calldd .undo A { background-image: url(icons/arrow-curve-180-left.png); }
+.ddmenu.calldd .redo A { background-image: url(icons/arrow-curve.png); }
+.ddmenu.calldd .cut A { background-image: url(icons/scissors.png); }
+.ddmenu.calldd .copy A { background-image: url(icons/document-copy.png); }
+.ddmenu.calldd .paste A { background-image: url(icons/clipboard.png); }
+.ddmenu.calldd .delete A { background-image: url(icons/cross-script.png); }
 */
 
 .block-reason {
