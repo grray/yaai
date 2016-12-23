@@ -42,7 +42,7 @@ global $sugar_config;
 global $locale;
 global $current_user;
 
-// what are these for?? 
+// what are these for??
 chdir("../");
 chdir("../");
 chdir("../");
@@ -64,9 +64,9 @@ $context = $sugar_config['asterisk_context'];
 // start the Session ... get the User
 
 // Edit: The snippet below was what was used on Sugar 6.1 instead of getting it from the $current_user object.
-// WHEN used on 6.4.0 - I would get an out of memory error! See: 
+// WHEN used on 6.4.0 - I would get an out of memory error! See:
 //require_once('modules/Users/User.php');
-//session_start(); 
+//session_start();
 //$cUser = new User();
 //$cUser->retrieve($_SESSION['authenticated_user_id']);
 //$extension 	= $cUser->asterisk_ext_c;
@@ -79,7 +79,7 @@ $extension = $extensionsArray[0];
 //printr($current_user);
 //print $extension . "<BR><BR>";
 
-// Take the user supplied pattern, we find the part with the #'s (which are the ext)... then we get something like 
+// Take the user supplied pattern, we find the part with the #'s (which are the ext)... then we get something like
 // asterisk_dialout_channel == "SIP/###"   --> $matches[1] == SIP/, $matches[2] == "###", $matches[3] is "".
 // asterisk_dialout_channel == "Local/###@sugarsip/n"   --> $matches[1] == Local/, $matches[2] == "###", $matches[3] is "@sugarsip/n".
 preg_match('/([^#]*)(#+)([^#]*)/',$sugar_config['asterisk_dialout_channel'],$matches);
@@ -122,7 +122,7 @@ $socket = fsockopen($server, $port, $errno, $errstr, 20);
 	fputs($socket, "Context: ". $context ."\r\n");
 	fputs($socket, "Exten: " . $number . "\r\n");
 	fputs($socket, "Priority: 1\r\n");
-	fputs($socket, "Callerid:" . $_REQUEST['phoneNr'] ."\r\n");
+	// fputs($socket, "Callerid:" . $_REQUEST['phoneNr'] ."\r\n");
     fputs($socket, "Account: CLICKTODIAL-" .  formatPhoneNumberToE164($_REQUEST['phoneNr']) . "-" . $_REQUEST['module'] . "-" . $_REQUEST['contactId'] . "\r\n");
 	fputs($socket, "Variable: CALLERID(number)=" . $extension . "\r\n\r\n");
 
