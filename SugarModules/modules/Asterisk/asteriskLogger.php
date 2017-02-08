@@ -453,10 +453,17 @@ while (true) {
                 //
                 // Call Event
                 // AMI 1.0 doesn't have SubEvent
-                if (($e['Event'] == 'Dial' && ($e['SubEvent'] == 'Begin' || !isset($e['SubEvent']))) ||
+                if (($e['Event'] == 'DialBegin') ||
+                    ($e['Event'] == 'Dial' && ($e['SubEvent'] == 'Begin' || !isset($e['SubEvent']))) ||
                     ($e['Event'] == 'Join' && !empty($e['Queue'])))
                 {
                     purgeExpiredEventsFromDb(); // clears out db of old events... also called when timeouts occcur
+
+                    if ($e['Event'] == 'DialBegin') {
+                        $e['Destination'] = $e['DestChannel'];
+                        $eChannel = $e['DestChannel'];
+
+                    }
 
                     logLine("! Dial Event src=" . $e['Channel'] . " dest=" . $e['Destination'] . "\n"); //Asterisk Manager 1.1
 
