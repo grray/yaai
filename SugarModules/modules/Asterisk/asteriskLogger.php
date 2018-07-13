@@ -1195,8 +1195,8 @@ while (true) {
                     } // End if INBOUND hangup event
                 }// End of HangupEvent.
                 // success
-                //Asterisk Manager 1.1
-                if ($e['Event'] == 'Bridge') {
+                // Asterisk Manager 1.1 - Bridge, Asterisk 13 - BridgeEnter
+                if ($e['Event'] == 'Bridge' || $e['Event'] == 'BridgeEnter') {
                     logLine("DEBUG: Entered Bridge");
                     $query = "SELECT direction, callstate FROM asterisk_log WHERE asterisk_id='" . $e['Uniqueid2'] . "' OR asterisk_dest_id='" . $e['Uniqueid2'] . "'" . " OR asterisk_id='" . $e['Uniqueid1'] . "' OR asterisk_dest_id='" . $e['Uniqueid1'] . "'"; // Second half of this is for outgoing
                     $result = db_checked_query($query);
